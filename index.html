@@ -178,7 +178,7 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/archives/" rel="section">
+          <a href="/" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
@@ -215,6 +215,126 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/23/数据库重建索引/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Uknowho">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="P1ayground">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/23/数据库重建索引/" itemprop="url">Untitled</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-23T22:20:19+08:00">
+                2018-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="数据库重建索引"><a href="#数据库重建索引" class="headerlink" title="数据库重建索引"></a>数据库重建索引</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">--重建索引</span><br><span class="line">DECLARE @DBCCString NVARCHAR(1000)</span><br><span class="line">DECLARE @TableName VARCHAR(150)</span><br><span class="line">declare @n int</span><br><span class="line">declare @cu int</span><br><span class="line">select @n= (select count(1) from  sysobjects WHERE xType=&apos;U&apos; and name not like &apos;tmp%&apos;)</span><br><span class="line">select @cu=1</span><br><span class="line">DECLARE Cur_Index CURSOR FOR</span><br><span class="line">SELECT Name AS TblName FROM sysobjects WHERE xType=&apos;U&apos;  and name not like &apos;tmp%&apos; ORDER BY TblName</span><br><span class="line">FOR READ ONLY</span><br><span class="line">OPEN Cur_Index</span><br><span class="line">FETCH NEXT FROM Cur_Index INTO @TableName</span><br><span class="line">WHILE @@FETCH_STATUS=0</span><br><span class="line">BEGIN</span><br><span class="line">  SET @DBCCString = &apos;DBCC DBREINDEX(@TblName,&apos;&apos;&apos;&apos;)WITH NO_INFOMSGS&apos;</span><br><span class="line">  EXEC SP_EXECUTESQL  @DBCCString,N&apos;@TblName VARCHAR(180)&apos;,@TableName</span><br><span class="line">  PRINT &apos;第&apos; + CONVERT(varchar (12), @cu)+ &apos; /共 &apos; +CONVERT(varchar (12), @n) +  &apos;  重建表： &apos; + @TableName +&apos; 的索引......OK!&apos;</span><br><span class="line">  FETCH NEXT FROM Cur_Index INTO @TableName</span><br><span class="line">  select @cu=@cu+1</span><br><span class="line">END</span><br><span class="line">CLOSE Cur_Index</span><br><span class="line">DEALLOCATE Cur_Index</span><br><span class="line">PRINT &apos;操作完成！&apos;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
     
       
 
@@ -513,7 +633,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
