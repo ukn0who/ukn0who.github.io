@@ -53,7 +53,10 @@
     <span class="post-time">2018-10-07</span>
   </div>
   <div class="post-content">
-    <h2 id="带后缀的常量"><a href="#带后缀的常量" class="headerlink" title="带后缀的常量"></a>带后缀的常量</h2><ul>
+    <blockquote>
+<p>常量表达式,在<strong>编译时</strong>求值.</p>
+</blockquote>
+<h2 id="带后缀的常量"><a href="#带后缀的常量" class="headerlink" title="带后缀的常量"></a>带后缀的常量</h2><ul>
 <li>带后缀的整数</li>
 </ul>
 <p><code>long</code> 类型的常量通常以 <code>l</code> 或 <code>L</code> 结尾, 例如 <code>1234L</code>. </p>
@@ -70,12 +73,13 @@
 <p>八进制和十六进制常量也可以使用 <code>L</code> 和 <code>U</code> 代表 <code>long</code> 和 <code>unsigned</code> 如 <code>0xFUL</code>~Hex~ 等于十进制<code>1</code>~Decimal~</p>
 </blockquote>
 <h2 id="字符常量"><a href="#字符常量" class="headerlink" title="字符常量"></a>字符常量</h2><p>字符本质上是一个整数, 需要用<strong>单引号</strong>括起来.</p>
+<p>‘\0’ 表示空字符(null)</p>
 <h2 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h2><p>\a    响铃            \\        反斜杠</p>
 <p>\b    回退            \?        问号</p>
 <p>\f    换页            \‘        单引号</p>
 <p>\n    换行            \“        双引号</p>
-<p>\r    回车            \ooo    八进制数</p>
-<p>\t    横向制表符        \xhh    十六进制数</p>
+<p>\r    回车            \ooo    八进制数 (替换ooo)</p>
+<p>\t    横向制表符        \xhh    十六进制数 (替换hh)</p>
 <p>\v    纵向制表符</p>
 
   </div>
