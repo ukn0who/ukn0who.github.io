@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  
+  <title>C语言枚举类型 - P1ayground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  
+  <meta name="keywords" content=生活,博客,前端,游戏>
+  
+  
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.02">
+  
+  
+    <link rel="alternate" href="/atom.xml " title="P1ayground" type="application/atom+xml">
+  
+
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+  <body>
+    <div class="container">
+      <header class="header">
+  <div class="blog-title">
+    <a href="/" class="logo">P1ayground</a>
+    <div class="subtitle"></div>
+  </div>
+  <nav class="navbar">
+    <ul class="menu">
+      
+        <li class="menu-item">
+          <a href="/" class="menu-item-link">Home</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/archives" class="menu-item-link">Archives</a>
+        </li>
+      
+        <li class="menu-item">
+          <a href="/about" class="menu-item-link">About</a>
+        </li>
+      
+    </ul>
+  </nav>
+</header>
+<article class="post">
+  <div class="post-title">
+    <h1 class="article-title">C语言枚举类型</h1>
+  </div>
+   <div class="post-meta">
+    <span class="post-time">2018-10-17</span>
+  </div>
+  <div class="post-content">
+    <h3 id="枚举类型是什么"><a href="#枚举类型是什么" class="headerlink" title="枚举类型是什么"></a>枚举类型是什么</h3><p>枚举(enum)是一个描述 常量<strong>整型值的列表</strong>(或叫集合)的<strong>类型</strong></p>
+<p>由于枚举被当作一种类型, 所以枚举的使用方式可以模仿C语言基本变量: (<code>char</code> <code>int</code> <code>float</code> <code>double</code>, 4种基本变量)</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*基本变量使用方式*/</span></span><br><span class="line"><span class="keyword">int</span> v = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*enum使用方式*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> boolean &#123;NO, YES&#125;;</span><br></pre></td></tr></table></figure>
+<p>可以这样理解这个定义<code>enum boolean {NO, YES};</code></p>
+<ul>
+<li><p><strong>enum</strong> : 声明一个枚举(enum).</p>
+</li>
+<li><p><strong>boolean</strong>: 给枚举起个名称, 当然也可以不起这个名称, 所以 enum后面的名称是<strong>可以省略的,</strong>.</p>
+<p>名称<code>boolean</code>实际上指代的是<code>enum {NO, YES}</code> 这个<strong>整体部分</strong>.(人们都是懒惰的, 谁不想用<code>boolean</code>去代替每次输入<code>enum {NO, YES}</code>的麻烦呢?)</p>
+</li>
+<li><p><strong>{NO, YES}</strong>: 枚举的<strong>值</strong> <code>enum</code>的另一个治疗懒惰的方式就是”让你不去做这件事”.所以枚举(enum)会<strong>自动赋值</strong>.</p>
+<p>规则是:</p>
+<ul>
+<li><strong>没有显示说明</strong>的情况下, <code>enum</code>类型中的第一个值为 <strong>0</strong>, 第二个值为 <strong>1</strong>, 第三个值为 <strong>2</strong>. …以此类推.</li>
+<li>如果<strong>指定了部分</strong>(没有人会从中间指定), 未指定的部分将按照最后一个枚举的值, <strong>依次递增,</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> weeks &#123;MON = <span class="number">1</span>, TUES, WED, THUR, FRI, SAT, SUN&#125;;</span><br><span class="line"><span class="comment">/* TUES 就等于 2 了 */</span></span><br></pre></td></tr></table></figure>
+<h3 id="枚举变量声明方式"><a href="#枚举变量声明方式" class="headerlink" title="枚举变量声明方式"></a>枚举变量声明方式</h3><p>虽然<code>enum boolean {NO, YES};</code> 定义起来很简单, 但在代码中经常还会出现其他形式的声明或定义.</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*第一种, 直接声明变量*/</span></span><br><span class="line"><span class="keyword">enum</span> boolean &#123;</span><br><span class="line">    NO, </span><br><span class="line">    YES</span><br><span class="line">&#125;,okboolean;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*第二种, 间接声明变量*/</span></span><br><span class="line"><span class="keyword">enum</span> boolean &#123;</span><br><span class="line">    NO,</span><br><span class="line">    YES</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">enum</span> boolean okboolean;</span><br></pre></td></tr></table></figure>
+<p>跟C语言中的结构体几乎一样. 还有很多使用 <code>typedef</code> 的. 跟这两种实际上没有差别.需要记住的是:</p>
+<ol>
+<li>定义<code>enum</code>的别名是可以省略的.就算使用<code>typedef</code>也是一样.</li>
+<li><code>enum {...}</code>这个<strong>整体</strong>是一种类型, 带别名或不带别名都没有差别, 都要当作一个整体.</li>
+<li>在枚举定义完之后 (即 <code>反中括号 }</code>后面) 是枚举<strong>变量</strong>名, 可以想象<code>enum {}</code> 这个整体就是 <code>int</code> , (或者其他类型) 跟在后面就是变量名.</li>
+</ol>
+</li>
+</ul>
+<h3 id="枚举有什么用"><a href="#枚举有什么用" class="headerlink" title="枚举有什么用"></a>枚举有什么用</h3><p>  我觉得还是因为懒. 人们原来使用<code>#define</code>每次都要一个<code>#define</code> 定义一个常量 写一个值. 枚举的出现很大可能就是为了解决不用多次输入这个问题.</p>
+<p>  所以从<strong>功能上</strong>来讲, <code>enum</code> 和 <code>#define</code> <strong>没有区别</strong>. 枚举和<code>#define</code>相比 最大的<strong>优势</strong>在于常量的值可<strong>以自动生成</strong>.</p>
+<p>  根据<the c="" programing="" language="">一书的说法, 对于<code>enum</code>的变量, 编译器不会去检查这个变量被赋予的值是不是在枚举列表中存在, 但是枚举类型本身却可以提供这种检查.</the></p>
+<p>  换句话说枚举变量只能使用定义时列表内的值,  用上面的例子来解释的话 <code>okboolean</code> 这个枚举变量在赋值时, 只能使用 <code>NO</code> 或 <code>YES</code> 来赋值</p>
+<p>  因此枚举比<code>#define</code><strong>更有优势</strong>.</p>
+
+  </div>
+  <div class="post-footer">
+    
+
+    <a href="#top" class="top">Back to Top</a>
+  </div>
+</article>
+<footer>
+  &copy; 2018
+  <span class="author">
+    Uknowho
+  </span>
+</footer>
+    </div>
+  </body>
+</html>
