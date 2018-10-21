@@ -86,17 +86,17 @@
 
 
 
-<meta name="description" content="[TOC] 基本类型C 语言只提供 4 种基本类型: char 字符型, 占 1 字节 (Byte), 存放本地字符集.[^1]  int 整形, 具体长度和机器相关.  float 单精度浮点型. double 双精度浮点型. short 与 longshort 与 long 只用于限定 int 类型.  short 和 int至少 16 位, long 至少 32 位. short 不能长于">
+<meta name="description" content="基本类型C 语言只提供 4 种基本类型: char 字符型, 占 1 字节 (Byte), 存放本地字符集.[^1]  int 整形, 具体长度和机器相关.  float 单精度浮点型. double 双精度浮点型. short 与 longshort 与 long 只用于限定 int 类型.  short 和 int至少 16 位, long 至少 32 位. short 不能长于 int .">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言数据类型及长度">
 <meta property="og:url" content="http://yoursite.com/2018/10/07/C语言数据类型及长度/index.html">
 <meta property="og:site_name" content="P1ayground">
-<meta property="og:description" content="[TOC] 基本类型C 语言只提供 4 种基本类型: char 字符型, 占 1 字节 (Byte), 存放本地字符集.[^1]  int 整形, 具体长度和机器相关.  float 单精度浮点型. double 双精度浮点型. short 与 longshort 与 long 只用于限定 int 类型.  short 和 int至少 16 位, long 至少 32 位. short 不能长于">
+<meta property="og:description" content="基本类型C 语言只提供 4 种基本类型: char 字符型, 占 1 字节 (Byte), 存放本地字符集.[^1]  int 整形, 具体长度和机器相关.  float 单精度浮点型. double 双精度浮点型. short 与 longshort 与 long 只用于限定 int 类型.  short 和 int至少 16 位, long 至少 32 位. short 不能长于 int .">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-21T04:14:51.374Z">
+<meta property="og:updated_time" content="2018-10-21T04:17:30.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言数据类型及长度">
-<meta name="twitter:description" content="[TOC] 基本类型C 语言只提供 4 种基本类型: char 字符型, 占 1 字节 (Byte), 存放本地字符集.[^1]  int 整形, 具体长度和机器相关.  float 单精度浮点型. double 双精度浮点型. short 与 longshort 与 long 只用于限定 int 类型.  short 和 int至少 16 位, long 至少 32 位. short 不能长于">
+<meta name="twitter:description" content="基本类型C 语言只提供 4 种基本类型: char 字符型, 占 1 字节 (Byte), 存放本地字符集.[^1]  int 整形, 具体长度和机器相关.  float 单精度浮点型. double 双精度浮点型. short 与 longshort 与 long 只用于限定 int 类型.  short 和 int至少 16 位, long 至少 32 位. short 不能长于 int .">
 
 
 
@@ -306,8 +306,7 @@
       
 
       
-        <p>[TOC]</p>
-<h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><p>C 语言只提供 <strong>4</strong> 种基本类型:</p>
+        <h2 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h2><p>C 语言只提供 <strong>4</strong> 种基本类型:</p>
 <p><code>char</code> 字符型, 占 1 字节 (Byte), 存放本地字符集.[^1] </p>
 <p><code>int</code> 整形, 具体长度和机器相关. </p>
 <p><code>float</code> 单精度浮点型.</p>
@@ -316,7 +315,7 @@
 <p><code>short</code> 和 <code>int</code>至少 <strong>16</strong> 位, <code>long</code> 至少 <strong>32</strong> 位. <code>short</code> 不能长于 <code>int</code> . <code>int</code> 不能长于 <code>long</code> .</p>
 <h2 id="signed-与-unsigned"><a href="#signed-与-unsigned" class="headerlink" title="signed 与 unsigned"></a>signed 与 unsigned</h2><p><code>signed</code> 与 <code>unsigned</code> 用于限定 <code>char</code> 或 <strong>任何类型</strong> .</p>
 <p><code>unsigned</code> 用于是大于 0 的.</p>
-<h4 id="signed-与-signed-取值范围"><a href="#signed-与-signed-取值范围" class="headerlink" title="signed 与 signed 取值范围"></a>signed 与 signed 取值范围</h4><p>取值范围遵循 $2^n$. 比如 <code>char</code> 占 8 位, 则 <code>unsigned</code> 取值范围为 0~255, <code>signed</code> 为 -127~128.</p>
+<h4 id="signed-与-signed-取值范围"><a href="#signed-与-signed-取值范围" class="headerlink" title="signed 与 signed 取值范围"></a>signed 与 signed 取值范围</h4><p>取值范围遵循 $2^n​$. 比如 <code>char</code> 占 8 位, 则 <code>unsigned</code> 取值范围为 0~255, <code>signed</code> 为 -128 ~ +127.</p>
 <hr>
 <p>[^1]: 字符本质上是一个整数, 具体定义跟字符集有关, 可以通过命令 <code>ascii</code> 在Linux上查看ASCII字符集.</p>
 
