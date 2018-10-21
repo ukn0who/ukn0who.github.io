@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>P1ayground</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yoursite.com/"/>
+  <updated>2018-10-21T14:19:48.789Z</updated>
+  <id>http://yoursite.com/</id>
+  
+  <author>
+    <name>Uknowho</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>C 语言- 输出有符号, 无符号类型范围</title>
+    <link href="http://yoursite.com/2018/10/21/C%20%E8%AF%AD%E8%A8%80-%20%E8%BE%93%E5%87%BA%E6%9C%89%E7%AC%A6%E5%8F%B7%E6%97%A0%E7%AC%A6%E5%8F%B7%E7%B1%BB%E5%9E%8B%E8%8C%83%E5%9B%B4/"/>
+    <id>http://yoursite.com/2018/10/21/C 语言- 输出有符号无符号类型范围/</id>
+    <published>2018-10-21T12:41:16.000Z</published>
+    <updated>2018-10-21T14:19:48.789Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述:"></a>问题描述:</h3><p>在&lt;C语言程序设计&gt;中, 其中一个问题是: 编写一个程序分别确定有符号 (signed) 和无符号 (unsighed) 限定的 <code>char</code> <code>int</code> <code>short</code> <code>long</code> 类型的取值范围.</p><p>一种方式就是直接输出定义在 <code>limits.h</code> 头文件中的各种类型宏.例如</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;limits.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* signed */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"signed char min = %d\n"</span>, SCHAR_MIN);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"signed char max = %d\n"</span>, SCHAR_MAX);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* unsigned */</span></span><br><span class="line"><span class="built_in">printf</span> (<span class="string">"unsigned char max = %d\n, UCHAR_MAX"</span>); <span class="comment">//无符号类型的值最小值都是 0</span></span><br></pre></td></tr></table></figure><p>另一种方式是直接计算, 不使用定义好的头文件.</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># <span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* signed */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"signed char min = %d\n"</span>, ~(<span class="keyword">char</span>)(<span class="keyword">unsigned</span> <span class="keyword">char</span>) ~<span class="number">0</span> &gt;&gt; <span class="number">1</span>);</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"signed char max = %d\n"</span>,  (<span class="keyword">char</span>)(<span class="keyword">unsigned</span> <span class="keyword">char</span>) ~<span class="number">0</span> &gt;&gt; <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* unsigned */</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">"unsigned char max = %u"</span>, (<span class="keyword">unsigned</span> <span class="keyword">char</span>) ~<span class="number">0</span>);</span><br></pre></td></tr></table></figure><p>对于有符号类型范围计算的解释是;</p><ol><li><p>先将 <code>0</code> 的各个位<strong>取反</strong>.即 [0….00] 变为 [1…11].</p><p>~0</p></li><li><p>强制类型转换为 unsigned char.</p><p>(unsigned char) ~0</p></li><li><p>右移 1 个单位, 用来去除符号位. </p><p>(unsigned char) ~0 &gt;&gt; 1</p><blockquote><p>右移之后, 最高位会用 0 填充. 在 signed 类型的解释中, 最高为位(符号位)为 0 , 解释为正数.</p></blockquote></li><li><p>最后转为 char 类型 (signed). 即为有符号 char 的最大值</p><p>(char)(unsigned char) ~0 &gt;&gt; 1</p></li></ol><hr><h3 id="思路总结"><a href="#思路总结" class="headerlink" title="思路总结"></a>思路总结</h3><p>大家都知道在计算机中是以 <strong>二进制</strong> 方式存储信息.</p><p>对于非负数, 即<code>unsigned</code>类型, 其最小值  $ U_{min}$ 等于所有位取值为 $0$ 时. 即 $U_{min} = 0$. 其最大值 $U_{max}$ 等于所有位取值为 $1$ 时, 即 $U_{max} = 2^w$, $w$ 代表类型所占的位数(bits).</p><p>而对于负数, 由于<strong>最高位用作符号位</strong> 所以用来表示数的范围的位数比总位数少 $1$ . 即对于 8 位类型的有符号(signed) 数, 真正表示数值的 只有 7 位. 所以对于负数的最大值是$S_{max} = 2^{8-1} = 127$ , 所以当符号位为 0, 其余数值各位取 1 , 即位表示为[01….1]时, 有符号类型有最大值. <strong>最小值等于对最大值取反</strong>,即 $S_{min} =$ ~ $S_{max}$ </p><h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><p>为什么对于有符号数来说, 最大值取反就是最小值呢? 请看这里的解释:</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述:&quot;&gt;&lt;/a&gt;问题描述:&lt;/h3&gt;&lt;p&gt;在&amp;lt;C语言程序设计&amp;gt;中, 其中一个问题是: 编写一个程序分别确定有符号 (signed) 和无符号 (uns
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C语言 - 枚举类型</title>
+    <link href="http://yoursite.com/2018/10/17/C%E8%AF%AD%E8%A8%80%20-%20%E6%9E%9A%E4%B8%BE%E7%B1%BB%E5%9E%8B/"/>
+    <id>http://yoursite.com/2018/10/17/C语言 - 枚举类型/</id>
+    <published>2018-10-17T13:01:41.000Z</published>
+    <updated>2018-10-21T14:17:33.373Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="枚举类型是什么"><a href="#枚举类型是什么" class="headerlink" title="枚举类型是什么"></a>枚举类型是什么</h3><p>枚举(enum)是一个描述 常量<strong>整型值的列表</strong>(或叫集合)的<strong>类型</strong></p><p>由于枚举被当作一种类型, 所以枚举的使用方式可以模仿C语言基本变量: (<code>char</code> <code>int</code> <code>float</code> <code>double</code>, 4种基本变量)</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*基本变量使用方式*/</span></span><br><span class="line"><span class="keyword">int</span> v = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*enum使用方式*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">enum</span> boolean &#123;NO, YES&#125;;</span><br></pre></td></tr></table></figure><p>可以这样理解这个定义<code>enum boolean {NO, YES};</code></p><ul><li><p><strong>enum</strong> : 声明一个枚举(enum).</p></li><li><p><strong>boolean</strong>: 给枚举起个名称, 当然也可以不起这个名称, 所以 enum后面的名称是<strong>可以省略的,</strong>.</p><p>名称<code>boolean</code>实际上指代的是<code>enum {NO, YES}</code> 这个<strong>整体部分</strong>.(人们都是懒惰的, 谁不想用<code>boolean</code>去代替每次输入<code>enum {NO, YES}</code>的麻烦呢?)</p></li><li><p><strong>{NO, YES}</strong>: 枚举的<strong>值</strong> <code>enum</code>的另一个治疗懒惰的方式就是”让你不去做这件事”.所以枚举(enum)会<strong>自动赋值</strong>.</p><p>规则是:</p><ul><li><strong>没有显示说明</strong>的情况下, <code>enum</code>类型中的第一个值为 <strong>0</strong>, 第二个值为 <strong>1</strong>, 第三个值为 <strong>2</strong>. …以此类推.</li><li>如果<strong>指定了部分</strong>(没有人会从中间指定), 未指定的部分将按照最后一个枚举的值, <strong>依次递增,</strong></li></ul><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> weeks &#123;MON = <span class="number">1</span>, TUES, WED, THUR, FRI, SAT, SUN&#125;;</span><br><span class="line"><span class="comment">/* TUES 就等于 2 了 */</span></span><br></pre></td></tr></table></figure><h3 id="枚举变量声明方式"><a href="#枚举变量声明方式" class="headerlink" title="枚举变量声明方式"></a>枚举变量声明方式</h3><p>虽然<code>enum boolean {NO, YES};</code> 定义起来很简单, 但在代码中经常还会出现其他形式的声明或定义.</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*第一种, 直接声明变量*/</span></span><br><span class="line"><span class="keyword">enum</span> boolean &#123;</span><br><span class="line">    NO, </span><br><span class="line">    YES</span><br><span class="line">&#125;,okboolean;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*第二种, 间接声明变量*/</span></span><br><span class="line"><span class="keyword">enum</span> boolean &#123;</span><br><span class="line">    NO,</span><br><span class="line">    YES</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">enum</span> boolean okboolean;</span><br></pre></td></tr></table></figure><p>跟C语言中的结构体几乎一样. 还有很多使用 <code>typedef</code> 的. 跟这两种实际上没有差别.需要记住的是:</p><ol><li>定义<code>enum</code>的别名是可以省略的.就算使用<code>typedef</code>也是一样.</li><li><code>enum {...}</code>这个<strong>整体</strong>是一种类型, 带别名或不带别名都没有差别, 都要当作一个整体.</li><li>在枚举定义完之后 (即 <code>反中括号 }</code>后面) 是枚举<strong>变量</strong>名, 可以想象<code>enum {}</code> 这个整体就是 <code>int</code> , (或者其他类型) 跟在后面就是变量名.</li></ol></li></ul><h3 id="枚举有什么用"><a href="#枚举有什么用" class="headerlink" title="枚举有什么用"></a>枚举有什么用</h3><p>  我觉得还是因为懒. 人们原来使用<code>#define</code>每次都要一个<code>#define</code> 定义一个常量 写一个值. 枚举的出现很大可能就是为了解决不用多次输入这个问题.</p><p>  所以从<strong>功能上</strong>来讲, <code>enum</code> 和 <code>#define</code> <strong>没有区别</strong>. 枚举和<code>#define</code>相比 最大的<strong>优势</strong>在于常量的值可<strong>以自动生成</strong>.</p><p>  根据<the c="" programing="" language="">一书的说法, 对于<code>enum</code>的变量, 编译器不会去检查这个变量被赋予的值是不是在枚举列表中存在, 但是枚举类型本身却可以提供这种检查.</the></p><p>  换句话说枚举变量只能使用定义时列表内的值,  用上面的例子来解释的话 <code>okboolean</code> 这个枚举变量在赋值时, 只能使用 <code>NO</code> 或 <code>YES</code> 来赋值</p><p>  因此枚举比<code>#define</code><strong>更有优势</strong>.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;枚举类型是什么&quot;&gt;&lt;a href=&quot;#枚举类型是什么&quot; class=&quot;headerlink&quot; title=&quot;枚举类型是什么&quot;&gt;&lt;/a&gt;枚举类型是什么&lt;/h3&gt;&lt;p&gt;枚举(enum)是一个描述 常量&lt;strong&gt;整型值的列表&lt;/strong&gt;(或叫集合)的&lt;str
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C语言 - 常量、转义字符</title>
+    <link href="http://yoursite.com/2018/10/07/C%E8%AF%AD%E8%A8%80%20-%20%E5%B8%B8%E9%87%8F/"/>
+    <id>http://yoursite.com/2018/10/07/C语言 - 常量/</id>
+    <published>2018-10-07T01:46:35.000Z</published>
+    <updated>2018-10-21T14:18:20.109Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>常量表达式,在<strong>编译时</strong>求值.</p></blockquote><h3 id="带后缀的常量"><a href="#带后缀的常量" class="headerlink" title="带后缀的常量"></a>带后缀的常量</h3><ul><li>带后缀的整数</li></ul><p><code>long</code> 类型的常量通常以 <code>l</code> 或 <code>L</code> 结尾, 例如 <code>1234L</code>. </p><p><code>unsigned</code> 以 <code>u</code> 或 <code>U</code> 结尾. <code>ul</code> 或 <code>UL</code> 代表 <code>unsigned long</code> 类型 </p><ul><li>带后缀的浮点数</li></ul><p>浮点数通常带有小数点(12.3)或指数(1e-2). </p><p>后缀 <code>f</code> 或 <code>F</code> 表示 <code>float</code>.类型.</p><p>后缀 <code>l</code> 或 <code>L</code> 表示 <code>long double</code> 类型.</p><h3 id="带前缀的常量"><a href="#带前缀的常量" class="headerlink" title="带前缀的常量"></a>带前缀的常量</h3><p>八进制整数表示, 以 <code>0</code> 为前缀. 如 <code>037</code>~Octal~ 代表十进制 <code>31</code>~Decimal~</p><p>十六进制整数表示,以 <code>0x</code> 或 <code>0X</code> 为前缀, 如<code>0x1f</code> ~Hex~或 <code>0x1F</code>~Hex~</p><blockquote><p>八进制和十六进制常量也可以使用 <code>L</code> 和 <code>U</code> 代表 <code>long</code> 和 <code>unsigned</code> 如 <code>0xFUL</code>~Hex~ 等于十进制<code>1</code>~Decimal~</p></blockquote><h3 id="字符常量"><a href="#字符常量" class="headerlink" title="字符常量"></a>字符常量</h3><p>字符本质上是一个整数, 需要用<strong>单引号</strong>括起来.</p><p>‘\0’ 表示空字符(null)</p><h3 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h3><p>\a    响铃            \\        反斜杠</p><p>\b    回退            \?        问号</p><p>\f    换页            \‘        单引号</p><p>\n    换行            \“        双引号</p><p>\r    回车            \ooo    八进制数 (替换ooo)</p><p>\t    横向制表符        \xhh    十六进制数 (替换hh)</p><p>\v    纵向制表符</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;常量表达式,在&lt;strong&gt;编译时&lt;/strong&gt;求值.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;带后缀的常量&quot;&gt;&lt;a href=&quot;#带后缀的常量&quot; class=&quot;headerlink&quot; title=&quot;带后缀的常量&quot;&gt;&lt;/a&gt;带后缀
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C语言 - 数据类型及长度</title>
+    <link href="http://yoursite.com/2018/10/07/C%E8%AF%AD%E8%A8%80%20-%20%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%8F%8A%E9%95%BF%E5%BA%A6/"/>
+    <id>http://yoursite.com/2018/10/07/C语言 - 数据类型及长度/</id>
+    <published>2018-10-07T01:16:52.000Z</published>
+    <updated>2018-10-21T14:19:07.371Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h3><p>C 语言只提供 <strong>4</strong> 种基本类型:</p><p><code>char</code> 字符型, 占 1 字节 (Byte), 存放本地字符集.[^1] </p><p><code>int</code> 整形, 具体长度和机器相关. </p><p><code>float</code> 单精度浮点型.</p><p><code>double</code> 双精度浮点型.</p><h3 id="short-与-long"><a href="#short-与-long" class="headerlink" title="short 与 long"></a>short 与 long</h3><p><code>short</code> 与 <code>long</code> 只用于限定 <code>int</code> 类型. </p><p><code>short</code> 和 <code>int</code>至少 <strong>16</strong> 位, <code>long</code> 至少 <strong>32</strong> 位. <code>short</code> 不能长于 <code>int</code> . <code>int</code> 不能长于 <code>long</code> .</p><h3 id="signed-与-unsigned"><a href="#signed-与-unsigned" class="headerlink" title="signed 与 unsigned"></a>signed 与 unsigned</h3><p><code>signed</code> 与 <code>unsigned</code> 用于限定 <code>char</code> 或 <strong>任何类型</strong> .</p><p><code>unsigned</code> 用于是大于 0 的.</p><h4 id="signed-与-signed-取值范围"><a href="#signed-与-signed-取值范围" class="headerlink" title="signed 与 signed 取值范围"></a>signed 与 signed 取值范围</h4><p>取值范围遵循 $2^n$. 比如 <code>char</code> 占 8 位, 则 <code>unsigned</code> 取值范围为 0~255, <code>signed</code> 为 -128 ~ +127.</p><hr><p>[^1]: 字符本质上是一个整数, 具体定义跟字符集有关, 可以通过命令 <code>ascii</code> 在Linux上查看ASCII字符集.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;基本类型&quot;&gt;&lt;a href=&quot;#基本类型&quot; class=&quot;headerlink&quot; title=&quot;基本类型&quot;&gt;&lt;/a&gt;基本类型&lt;/h3&gt;&lt;p&gt;C 语言只提供 &lt;strong&gt;4&lt;/strong&gt; 种基本类型:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;char&lt;/code&gt; 字符型
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>C语言 - 命名规则</title>
+    <link href="http://yoursite.com/2018/10/07/C%E8%AF%AD%E8%A8%80%20-%20%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"/>
+    <id>http://yoursite.com/2018/10/07/C语言 - 命名规则/</id>
+    <published>2018-10-07T00:48:44.000Z</published>
+    <updated>2018-10-21T14:16:38.459Z</updated>
+    
+    <content type="html"><![CDATA[<ol><li><strong>变量</strong>名使用<strong>小写</strong>字母</li><li><strong>常量</strong>全部使用<strong>大写</strong>字母</li><li>局部变量名尽量短, 外部变量名称较长</li></ol><blockquote><p>尽量不要使用下划线 “_” 开头的名字, 因为大多数库例程都是以下划线开头.<strong>内部名称</strong> 的有效长度至少为 <strong>31</strong> .<strong>外部名称</strong>ANSI仅保证前<strong>6</strong>个字符唯一</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;变量&lt;/strong&gt;名使用&lt;strong&gt;小写&lt;/strong&gt;字母&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;常量&lt;/strong&gt;全部使用&lt;strong&gt;大写&lt;/strong&gt;字母&lt;/li&gt;
+&lt;li&gt;局部变量名尽量短, 外部变量名称较长&lt;/li&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
