@@ -1,121 +1,135 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  
-  <title>C语言 - 命名规则 | P1ayground</title>
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
-  <meta name="HandheldFriendly" content="True" />
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="shortcut icon" href="/">
-  <link rel="alternate" href="/atom.xml" title="P1ayground">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-  <link rel="shortcut icon" href="" />
-  <link rel="icon" href="" />
-  <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//cdn.bootcss.com/node-waves/0.7.5/waves.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="/style.css">
-  <script>
-    function setLoadingBarProgress(num) {
-      document.getElementById('loading-bar').style.width=num+"%";
-    }
-  </script>
-</head>
-
-<body>
-    <div id="loading-bar-wrapper">
-  <div id="loading-bar"></div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        
+        <title>C语言 - 命名规则 | P1ayground</title>
+        
+        <link rel="alternate" href="/atom.xml" title="P1ayground" type="application/atom+xml">
+        
+        
+        <link rel="icon" href="//favicon.png">
+        
+        <link rel="stylesheet" href="/css/normalize.css">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/css/common.css">
+        <link rel="stylesheet" href="/css/markdown.css">
+    </head>
+    <body onscroll="scrollYListener()">
+        <div class="wrapper">
+            <div class="mobile_menu_btn">
+  <button id="mobile_menu_btn" class="c-hamburger c-hamburger--htx">
+  <span>toggle menu</span>
+  </button>
 </div>
-
-
-    <script>setLoadingBarProgress(20)</script>
-    <header class="l_header">
-	<div class='wrapper'>
-		<div class="nav-main container container--flex">
-			<a class="logo flat-box" href='/' >
-				<!-- <i class="fa fa-home"></i> -->
-				P1ayground
-			</a>
-
-				<div class='menu'>
-					<ul class='h-list'>
-                        
-    						
-    							<li>
-    								<a class='nav-about flat-box' href='/archives'>
-    									<i class='fa fa-home fa-'></i>&nbsp;主页
-    								</a>
-    							</li>
-    						
-        			 
-					</ul>
-					<div class='underline'></div>
+<div class="slide_menu">
+  <nav class="nav_scroll">
+    <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">Home</a> </li>
+      
+      
+      <li class="active dotted"> <a href="/archives">Archive</a> </li>
+      
+    </ul>
+  </nav>
+  <div class="social">
+    <ul class="clearfix">
+      
+      
+      <li> <a href="http://github.com/cheng-kang" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+      
+      
+      
+      <li> <a href="http://www.weibo.com/progrant" target="_blank"> <img src="/img/Weibo.png"> </a> </li>
+      
+      
+      
+      <li> <a href="https://twitter.com/ScotlAnt" target="_blank"> <img src="/img/Twitter.png"> </a> </li>
+      
+      
+      
+      
+    </ul>
+  </div>
+  <div class="copyright">
+    &copy; 2018 P1ayground | Provided By  <a title="Uknowho" href="http://chengkang.me/" target="_blank">Uknowho</a>
+  </div>
+</div>
+<header>
+  <div class="mobile_navbar clearfix">
+    
+    <div class="logo">
+      <a href="/">P1ayground</a>
+    </div>
+    
+  </div>
+  <div class="row clearfix no_form">
+    <div class="logo">
+      <a href="/">P1ayground</a>
+    </div>
+    <nav class="nav_scroll">
+      <ul class="clearfix">
+      
+      
+      <li class=""> <a href="/">Home</a> </li>
+      
+      
+      <li class="active dotted"> <a href="/archives">Archive</a> </li>
+      
+      </ul>
+    </nav>
+  </div>
+</header>
+            <div class="section" id="Search">
+	<div class="section_content">
+		<h3>
+		Search
+		<br>
+		Find out if your question is answered here
+		</h3>
+		<div id="search-content" class="search-content-modal unexpanded">
+			<div id="search-view">
+				<div class="search-info box">
+					<input type="text" id="search-input" placeholder="Enter Keyword" >
+					<div class="magnifying-glass" id="search-button" >
+						<svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 500 500">
+						<path fill="none" stroke="#fff" stroke-width="36" stroke-linecap="round" d="m280,278a153,153 0 1,0-2,2l170,170m-91-117 110,110-26,26-110-110"></path>
+					</svg>
 				</div>
-
-			
-			<ul class='switcher h-list'>
-				
-				<li class='s-menu'><a class="fa fa-navicon fa-fw" href='javascript:void(0)'></a></li>
-			</ul>
-		</div>
-
-		<div class='nav-sub container container--flex'>
-			<a class="logo flat-box"></a>
-			<ul class='switcher h-list'>
-				<li class='s-comment'><a class="fa fa-comments fa-fw flat-box" href='javascript:void(0)'></a></li>
-				<li class='s-top'><a class="fa fa-arrow-up fa-fw flat-box" href='javascript:void(0)'></a></li>
-				<li class='s-toc'><a class="fa fa-list-ul fa-fw flat-box" href='javascript:void(0)'></a></li>
-			</ul>
+			</div>
+			<div class="modal" id="search-result" style="display:none">
+				<h2 id="search-result-title">Found 0 match(es):</h2>
+				<ul id="search-result-list">
+				</ul>
+				<span>
+					<button onclick="dismissSearchResultModal()">×</button>
+				</span>
+			</div>
 		</div>
 	</div>
-</header>
-	<aside class="menu-phone">
-        <div class="header">P1ayground</div>
-		<nav>
-            <ul>
-                
-                    
-                        <li>
-                            <a class='nav-about flat-box nav flat-box' href='/archives'><i class='fa fa-home fa-fw'></i>&nbsp;主页</a>
-                        </li>
-                    
-             
-            </ul>
-		</nav>
-	</aside>
+</div>
 
-    <script>setLoadingBarProgress(40);</script>
-    <div class="l_body">
-    <div class='container clearfix'>
-        <div class='l_main'>
-            <article id="post-C语言 - 命名规则" class="post white-box article-type-post" itemscope itemprop="blogPost">
-    <section class='meta'>
-        <h1 class="title">
-            
-                C语言 - 命名规则
-            
-        </h1>
-        <time>
-            <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>&nbsp;2018-10-07&nbsp;&nbsp;
-            <i class="fa fa-eye fa-fw" aria-hidden="true"></i>&nbsp;<span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
-        </time>
-        
-    
-    <div class='cats'>
-        
-    </div>
+<script src="/js/jquery-3.1.1.min.js"></script>
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+var path = "/search.xml";
+searchFunc(path, 'search-input', 'search-result-list');
+</script>
 
-
-    </section>
-
-    <section class="article typo">
-
-        <div class="article-entry" itemprop="articleBody">
-            <ol>
+<script>
+function dismissSearchResultModal() {
+	document.getElementById("search-result").style.display = "none";
+}
+</script>
+</div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb"><a href="/">Q&amp;A</a> / C语言 - 命名规则</p>
+		<div class="page_content mdcss">
+			<ol>
 <li><strong>变量</strong>名使用<strong>小写</strong>字母</li>
 <li><strong>常量</strong>全部使用<strong>大写</strong>字母</li>
 <li>局部变量名尽量短, 外部变量名称较长</li>
@@ -124,191 +138,80 @@
 <p>尽量不要使用下划线 “_” 开头的名字, 因为大多数库例程都是以下划线开头.<strong>内部名称</strong> 的有效长度至少为 <strong>31</strong> .<strong>外部名称</strong>ANSI仅保证前<strong>6</strong>个字符唯一</p>
 </blockquote>
 
-        </div>
+		</div>
+	</div>
 
-        
-            <div class="article-tags tags">
-                
-            </div>
-        
+	
 
-        
-            <div class="prev-next">
-                
-                    <section class="prev" >
-                        <span class="art-item-left">
-                            <h6><i class="fa fa-chevron-left" aria-hidden="true"></i>&nbsp;上一篇</h6>
-                            <h4>
-                                <a href="/2018/10/07/C语言 - 数据类型及长度/" rel="prev" title="C语言 - 数据类型及长度">
-                                  
-                                      C语言 - 数据类型及长度
-                                  
-                                </a>
-                            </h4>
-                            
-                        </span>
-                    </section>
-                
-                
-            </div>
-        
+	
+	
+</div>
 
-    </section>
+	
+	
+	
+	<div class="section" id="Pagenation">
+		
+		<a href="/2018/10/07/C语言 - 数据类型及长度/">Prev</a>
+		
+		
+	</div>
+	
 
-</article>
-
-<br>
-
-<!-- 显示推荐文章和评论 -->
-
-    <article class="post white-box comments">
-        <section class="article typo">
-
-            
-                
-
-    <div class="recommended_posts">
-        <h4><i class="fa fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;你可能感兴趣的文章</h4>
-        <ul>
-            
-                <li><a href="http://yoursite.com/2018/10/21/C 语言- 输出有符号无符号类型范围/">C 语言- 输出有符号, 无符号类型范围</a></li>
-            
-                <li><a href="http://yoursite.com/2018/10/17/C语言 - 枚举类型/">C语言 - 枚举类型</a></li>
-            
-                <li><a href="http://yoursite.com/2018/10/07/C语言 - 常量/">C语言 - 常量、转义字符</a></li>
-            
-                <li><a href="http://yoursite.com/2018/10/07/C语言 - 数据类型及长度/">C语言 - 数据类型及长度</a></li>
-            
-        </ul>
-    </div>
-    <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-
-
-            
-
-            
-
-                
-
-                
-
-                
-            
-
-        </section>
-    </article>
-
-
-<script>
-    window.subData = {
-        title: 'C语言 - 命名规则',
-        tools: true
-    }
-</script>
-
-
-        </div>
-        <aside class='l_side'>
-            
-    
-        
-    <section class='m_widget author'>
-        
-            <div class='header'>
-                <img class='avatar' src='https://xaoxuu.com/assets/img/avatar.jpg' />
-            </div>
-        
-        
-        
-            <div class="social-wrapper">
-              
-            </div>
-        
-    </section>
-
-
-    
-    
-    
-    
-    
-    
-        
-
-    
-
-
-        </aside>
-        <script>setLoadingBarProgress(60);</script>
-    </div>
-    </div>
-    <footer id="footer" class="clearfix">
-    
-    <br>
-    <div>博客内容遵循 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="licenses">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></div>
-    <div>本站使用 <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> 作为主题，
-		总访问量为 <span id="busuanzi_value_site_pv"><i class="fa fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> 次。
-    </div>
+            <footer>
+	<div class="footer_wrap">
+		<div class="social">
+			<ul class="clearfix">
+				
+				
+				<li> <a href="http://github.com/cheng-kang" target="_blank"> <img src="/img/GitHub.png"> </a> </li>
+				
+				
+				
+				<li> <a href="http://www.weibo.com/progrant" target="_blank"> <img src="/img/Weibo.png"> </a> </li>
+				
+				
+				
+				<li> <a href="https://twitter.com/ScotlAnt" target="_blank"> <img src="/img/Twitter.png"> </a> </li>
+				
+				
+				
+				
+			</ul>
+		</div>
+		<img src="/img/line.jpg">
+		<div class="copyright">
+			&copy; 2018 P1ayground | Provided By  <a title="Uknowho" href="http://chengkang.me/" target="_blank">Uknowho</a>
+		</div>
+	</div>
 </footer>
-<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
-
-    <!-- MathJax配置，可通过单美元符号书写行内公式等 -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        "HTML-CSS": {
-            preferredFont: "TeX",
-            availableFonts: ["STIX","TeX"],
-            linebreaks: { automatic:true },
-            EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50)
-        },
-        tex2jax: {
-            inlineMath: [ ["$", "$"], ["\\(","\\)"] ],
-            processEscapes: true,
-            ignoreClass: "tex2jax_ignore|dno",
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        },
-        TeX: {
-            equationNumbers: { autoNumber: "AMS" },
-            noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } },
-            Macros: { href: "{}" }
-        },
-        messageStyle: "none"
-    });
-</script>
-<!-- 给MathJax元素添加has-jax class -->
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for(i=0; i < all.length; i += 1) {
-            all[i].SourceElement().parentNode.className += ' has-jax';
+        </div>
+        <script type="text/javascript">
+        function scrollYListener() {
+        var searchHeight = parseInt(getComputedStyle(document.getElementById("Search")).height)
+        var width = document.documentElement.clientWidth;
+        var supportPageOffset = window.pageXOffset !== undefined;
+        var isCSS1Compat = ((document.compatMode || "") === "CSS1Compat");
+        var scrollY = supportPageOffset ? window.pageYOffset : isCSS1Compat ? document.documentElement.scrollTop : document.body.scrollTop;
+        if (scrollY >= searchHeight-10) {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#cd4b4b";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#cd4b4b";
+        } else {
+        document.getElementsByTagName('header')[0].style.backgroundColor = "#4f8e8e";
+        document.getElementsByClassName('logo')[0].style.backgroundColor = "#4f8e8e";
         }
-    });
-</script>
-<!-- 通过连接CDN加载MathJax的js代码 -->
-<script type="text/javascript" async
-    src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
-
-
-
-    <script>setLoadingBarProgress(80);</script>
-    <script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src='//cdn.bootcss.com/node-waves/0.7.5/waves.min.js'></script>
-<script src="//cdn.bootcss.com/scrollReveal.js/3.3.2/scrollreveal.min.js"></script>
-<!-- 访问统计 -->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-<script src="/js/jquery.fitvids.js"></script>
-
-<script src="/js/search.js"></script>
-<script src="/js/app.js"></script>
-
-
-    
-    
-    
-
-
-    <script>setLoadingBarProgress(100);</script>
-</body>
+        }
+        var isMenuExpanded = false;
+        document.getElementById("mobile_menu_btn").onclick = function toggleMobileMenu() {
+        if (isMenuExpanded) {
+        document.getElementsByClassName('slide_menu')[0].className = "slide_menu";
+        } else {
+        document.getElementsByClassName('slide_menu')[0].className += " mobile_menu_active";
+        }
+        isMenuExpanded = !isMenuExpanded;
+        }
+        </script>
+        
+        
+    </body>
+</html>
