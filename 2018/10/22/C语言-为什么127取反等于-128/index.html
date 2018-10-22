@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         
-        <title>Archive: 2018/10 | P1ayground</title>
+        <title>C 语言- 为什么127取反等于-128? | P1ayground</title>
         
         <link rel="alternate" href="/atom.xml" title="P1ayground" type="application/atom+xml">
         
@@ -31,7 +31,7 @@
       <li class=""> <a href="/">Home</a> </li>
       
       
-      <li class="active"> <a href="/archives">Archive</a> </li>
+      <li class="active dotted"> <a href="/archives">Archive</a> </li>
       
     </ul>
   </nav>
@@ -77,7 +77,7 @@
       <li class=""> <a href="/">Home</a> </li>
       
       
-      <li class="active"> <a href="/archives">Archive</a> </li>
+      <li class="active dotted"> <a href="/archives">Archive</a> </li>
       
       </ul>
     </nav>
@@ -125,55 +125,34 @@ function dismissSearchResultModal() {
 }
 </script>
 </div>
-<div class="section" id="Archive">
-    <h2 class="center">Archive</h2>
-    <div class="post-list">
-        
-        
-        
-        
-        
-        
-        
-        <h4>2018</h4>
-        
-        <p class="post-title"><span>Oct 22, 2018</span><a href="/2018/10/22/C语言-为什么127取反等于-128/">C 语言- 为什么127取反等于-128?</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>Oct 21, 2018</span><a href="/2018/10/21/C 语言- 输出有符号无符号类型范围/">C 语言- 输出有符号, 无符号类型范围</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>Oct 17, 2018</span><a href="/2018/10/17/C语言 - 枚举类型/">C语言 - 枚举类型</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>Oct 7, 2018</span><a href="/2018/10/07/C语言 - 常量/">C语言 - 常量、转义字符</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>Oct 7, 2018</span><a href="/2018/10/07/C语言 - 数据类型及长度/">C语言 - 数据类型及长度</a></p>
-        
-        
-        
-        
-        
-        <p class="post-title"><span>Oct 7, 2018</span><a href="/2018/10/07/C语言 - 命名规则/">C语言 - 命名规则</a></p>
-        
-    </div>
+<div class="section" id="Post">
+	<div class="section_content">
+		<p class="breadcrumb"><a href="/">Q&amp;A</a> / C 语言- 为什么127取反等于-128?</p>
+		<div class="page_content mdcss">
+			<p>在求<code>signed</code> 和 <code>unsigned</code> 类型范围的文章中, 通过位计算的方式, 算出了类型的范围. 其中的一个让我比较疑惑的点是, <strong>范围的最大值取反, 就是范围的最小值</strong>.</p>
+<p>取反, 这个操作简单来讲就是将 1 置为 0 , 将 0 置为 1. 在有符号的类型中, </p>
+<p>​    127        =     [ 0111 1111 ]</p>
+<p>​    ~127    =     [ 1000 0000 ]</p>
+<p>为什么 <code>~127</code> 不等于 <code>-0</code> 呢?</p>
+
+		</div>
+	</div>
+
+	
+
+	
+	
 </div>
 
 	
 	
+	
+	<div class="section" id="Pagenation">
+		
+		
+		<a href="/2018/10/21/C 语言- 输出有符号无符号类型范围/">Next</a>
+		
+	</div>
 	
 
             <footer>

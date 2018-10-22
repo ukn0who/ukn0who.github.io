@@ -156,7 +156,7 @@ function dismissSearchResultModal() {
 <h3 id="思路总结"><a href="#思路总结" class="headerlink" title="思路总结"></a>思路总结</h3><p>大家都知道在计算机中是以 <strong>二进制</strong> 方式存储信息.</p>
 <p>对于非负数, 即<code>unsigned</code>类型, 其最小值  $ U_{min}$ 等于所有位取值为 $0$ 时. 即 $U_{min} = 0$. 其最大值 $U_{max}$ 等于所有位取值为 $1$ 时, 即 $U_{max} = 2^w$, $w$ 代表类型所占的位数(bits).</p>
 <p>而对于负数, 由于<strong>最高位用作符号位</strong> 所以用来表示数的范围的位数比总位数少 $1$ . 即对于 8 位类型的有符号(signed) 数, 真正表示数值的 只有 7 位. 所以对于负数的最大值是$S_{max} = 2^{8-1} = 127$ , 所以当符号位为 0, 其余数值各位取 1 , 即位表示为[01….1]时, 有符号类型有最大值. <strong>最小值等于对最大值取反</strong>,即 $S_{min} =$ ~ $S_{max}$ </p>
-<h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><p>为什么对于有符号数来说, 最大值取反就是最小值呢? 请看这里的解释:</p>
+<h3 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h3><p>为什么对于有符号数来说, 最大值取反就是最小值呢? 请看这里的解释</p>
 
 		</div>
 	</div>
@@ -171,6 +171,8 @@ function dismissSearchResultModal() {
 	
 	
 	<div class="section" id="Pagenation">
+		
+		<a href="/2018/10/22/C语言-为什么127取反等于-128/">Prev</a>
 		
 		
 		<a href="/2018/10/17/C语言 - 枚举类型/">Next</a>
